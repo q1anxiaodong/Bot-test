@@ -1,0 +1,16 @@
+name: 'Check PR description' 
+
+on:
+  pull_request:
+    types: [opened, edited]
+    
+jobs:
+  check-description:
+    runs-on: ubuntu-latest
+    steps:    
+    - uses: actions/checkout@v2
+    - name: Check PR description
+      uses: mheap/pr-description-checker-action@v1
+      with:
+        regex: 'Please fill in a description before submitting a PR'
+        error: 'Please fill in the pull request description'
